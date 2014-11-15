@@ -14,9 +14,12 @@
     "test",
     "tests"
   ],
-  "devDependencies": {
+  "dependencies": {
     "angular": "~1.2.14",
-    "angular-route": "~1.2.14"
+    "angular-route": "~1.2.14",
+    "bootstrap": "~3.2",
+    "highcharts-ng": "0.0.7",
+    "highcharts-release": "4"
   }
 }
 

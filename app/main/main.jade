@@ -1,4 +1,43 @@
-h3 List of Awesome Things
-ul
-  li(ng-repeat="thing in awesomeThings").
-    {{ thing }}
+| {{ calcModel }}
+.row
+  .col-xs-6
+    h3 My Home
+    .questions
+      ul
+        li(ng-repeat="v in homeTypes")
+          a(ng-click="calcModel.home = v.value", ng-class="{'active': calcModel.home == v.value}") {{ v.label }}
+
+      ul
+        li(ng-repeat="v in sizeTypes")
+          a(ng-click="calcModel.size = v.value", ng-class="{'active': calcModel.size == v.value}") {{ v.label }}
+
+      ul
+        li(ng-repeat="v in yearTypes")
+          a(ng-click="calcModel.year = v.value", ng-class="{'active': calcModel.year == v.value}") {{ v.label }}
+
+      ul
+        li
+          input(type="checkbox", ng-model="calcModel.installations.power.solar")
+          | Solar
+
+      ul
+        li
+          input(type="checkbox", ng-model="calcModel.installations.insulation.wall")
+          | Wall Insulation
+        li
+          input(type="checkbox", ng-model="calcModel.installations.insulation.floor")
+          | Floor Insulation
+        li
+          input(type="checkbox", ng-model="calcModel.installations.insulation.ceiling")
+          | Ceiling Insulation
+
+      ul
+        li(ng-repeat="v in windowTypes")
+          a(ng-click="calcModel.installations.windows = v.value", ng-class="{'active': calcModel.installations.windows == v.value}") {{ v.label }}
+
+  .col-xs-6
+    h3 My Result
+    highchart#savingsChart(config="savingsChart")
+    highchart#calcResultChart(config="calcResultChart")
+
+    a.btn.btn-primary Buy Shit

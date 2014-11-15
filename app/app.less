@@ -1,3 +1,20 @@
-.container {
-  background-color: red;
+.questions {
+  ul {
+    li {
+      display: block;
+      float: left;
+      padding: 10px;
+
+      .active {
+        font-weight: bold;
+        color: #ff0000;
+      }
+    }
+  }
+
+  ul:after {
+    display: block;
+    content: " ";
+    clear: both;
+  }
 }

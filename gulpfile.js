@@ -33,7 +33,7 @@ gulp.task('testJS', function() {
 });
 
 gulp.task('templates', function() {
-  // combine compiled Jade and html template files into 
+  // combine compiled Jade and html template files into
   // build/template.js
   gulp.src(['!./app/index.jade', '!./app.index.html',
       './app/**/*.html', './app/**/*.jade'])
@@ -73,8 +73,10 @@ gulp.task('libJS', function() {
     './bower_components/lodash/dist/lodash.js',
     './bower_components/jquery/dist/jquery.js',
     './bower_components/bootstrap/dist/js/bootstrap.js',
+    './bower_components/highcharts-release/highcharts-all.js',
     './bower_components/angular/angular.js',
-    './bower_components/angular-route/angular-route.js'
+    './bower_components/angular-route/angular-route.js',
+    './bower_components/highcharts-ng/dist/highcharts-ng.js'
     ]).pipe(concat('lib.js'))
       .pipe(gulp.dest('./build'));
 });
@@ -98,9 +100,9 @@ gulp.task('watch',function() {
 
   // reload connect server on built file change
   gulp.watch([
-      'build/**/*.html',        
+      'build/**/*.html',
       'build/**/*.js',
-      'build/**/*.css'        
+      'build/**/*.css'
   ], function(event) {
       return gulp.src(event.path)
           .pipe(connect.reload());
