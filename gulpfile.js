@@ -82,6 +82,7 @@ gulp.task('libJS', function() {
     './bower_components/highcharts-release/highcharts-all.js',
     './bower_components/angular/angular.js',
     './bower_components/angular-route/angular-route.js',
+    './bower_components/angular-slider/slider.js',
     './bower_components/highcharts-ng/dist/highcharts-ng.js'
     ]).pipe(concat('lib.js'))
       .pipe(gulp.dest('./build'));

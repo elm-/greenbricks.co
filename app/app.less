@@ -39,12 +39,55 @@ h3 {
   padding: 60px 50px;
 }
 
+.total-savings, .co2-savings {
+  width: 40%;
+  height: 120px;
+  padding: 10px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  background-color: @brand-primary;
+  color: #ffffff;
+  float: left;
+
+  .value {
+    font-size: 40px;
+    font-weight: bold;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+}
+
 .questions {
   padding: 0 30px;
 
   ul {
     padding: 0;
     margin: 40px 0;
+
+    .year-label {
+      font-size: 16px;
+      font-weight: bold;
+      color: @brand-primary;
+      float: left;
+    }
+
+    .year-slider {
+      float: right;
+
+      slider {
+        margin-top: 6px;
+        background-color: @brand-primary;
+
+        .bubble {
+          &.value {
+            display: none;
+          }
+        }
+      }
+    }
 
     &.questions-three {
       li {

@@ -3,6 +3,7 @@ angular.module "greenbricks", [
  "greenbricks-main"
  "templates"
  "highcharts-ng"
+ "ui.slider"
 ]
   .config ($routeProvider) ->
     $routeProvider

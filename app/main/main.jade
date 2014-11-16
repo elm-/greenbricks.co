@@ -1,7 +1,7 @@
 .data-entry
-  h3 My Home
+  h3 My House
   .questions
-    ul.questions-three
+    ul.questions-four
       li(ng-repeat="v in homeTypes", ng-class="{'active': calcModel.home == v.value}")
         a(ng-click="calcModel.home = v.value")
           img.img-responsive.img-padding-bottom(ng-src="/assets/img/selection/{{ v.value }}.png")
@@ -14,8 +14,11 @@
           span {{ v.label }}
 
     ul
-      li(ng-repeat="v in yearTypes")
-        a(ng-click="calcModel.year = v.value", ng-class="{'active': calcModel.year == v.value}") {{ v.label }}
+      .row-fluid
+      .col-xs-1.year-label {{ calcModel.year }}
+      .col-xs-11.year-slider
+        slider(floor="1930", ceiling="2010", step="10", precision="0", ng-model="calcModel.year")
+
 
     ul
       li(ng-class="{'active': calcModel.installations.power.solar}")
@@ -43,7 +46,17 @@
           img.img-responsive(ng-src="/assets/img/selection/windowsDouble.png")
           span Double Glass
 .data-result
-  highchart#savingsChart(config="savingsChart")
+
+  .total-savings
+    .value {{ totalSumFormatted() }}k €
+    .title Total Savings
+
+  .co2-savings
+    .value {{ totalCo2SumFormatted() / 25 }} tons / year
+    .title CO2 / Savings
+
+
+  //highchart#savingsChart(config="savingsChart")
   highchart#calcResultChart(config="calcResultChart")
 
   a.btn.btn-primary Buy Shit
