@@ -5,19 +5,31 @@ angular.module 'greenbricks-main',['ngRoute']
       .when '/main',
         templateUrl: 'main/main.html'
         controller: 'MainCtrl'
+      .when '/result',
+        templateUrl: 'main/result.html'
+        controller: 'ResultCtrl'
+      .when '/installer',
+        templateUrl: 'main/installer.html'
+        controller: 'InstallerCtrl'
       .when '/',
         templateUrl: 'main/landing.html'
         controller: 'LandingCtrl'
   .controller "LandingCtrl", ($scope, $location) ->
     $scope.address = null
 
-
     $scope.start = ->
       return unless $scope.address
 
       $location.path("/main").search(address: $scope.address)
 
-  .controller 'MainCtrl', ($scope, $routeParams) ->
+  .controller "ResultCtrl", ($scope, $location) ->
+    $scope.installer = ->
+      $location.path("/installer")
+
+  .controller "InstallerCtrl", ($scope) ->
+    $scope.foo = "bar"
+
+  .controller 'MainCtrl', ($scope, $routeParams, $location) ->
     solarRates =
       house:  600
       rowHouse: 400
@@ -81,8 +93,8 @@ angular.module 'greenbricks-main',['ngRoute']
     ]
 
     $scope.calcModel =
-      home: "house"
-      size: "one"
+      home: "rowHouse"
+      size: "three"
       year: 1960
       installations:
         insulation:
@@ -225,3 +237,6 @@ angular.module 'greenbricks-main',['ngRoute']
           gridLineColor: "#CCC"
 
       series: []
+
+    $scope.result = ->
+      $location.path("/result")

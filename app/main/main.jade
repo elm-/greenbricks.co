@@ -54,17 +54,33 @@
     .left
       img(src="/assets/img/co2.png")
     .right
-      .value {{ totalCo2SumFormatted() / 25 }} t
-      .title CO2 / year
+      .value {{ totalCo2SumFormatted() / 25 }}k
+      .title CO2 kg / year
+
+  .total-savings
+    .left
+      img(src="/assets/img/cost.png")
+    .right
+      .value {{ totalSumFormatted() / 25}}k €
+      .title Yearly Savings
+
+  .co2-savings
+    .left
+      img(src="/assets/img/comfort.png")
+    .right
+      .value Invaluable
+      .title Increased Comfort
 
 
 
   //highchart#savingsChart(config="savingsChart")
   highchart#calcResultChart(config="calcResultChart")
 
-  a.btn.btn-lg.btn-block.btn-primary Start Saving
+  a.btn.btn-lg.btn-block.btn-primary(ng-click="result()") Explore Offers and Options
 
 nav.navbar.navbar-inverse.navbar-fixed-bottom(role="navigation")
   .container
     ul
-      li test
+      li Enter Adress
+      li Personalized Report
+      li Explore Offers and Options
