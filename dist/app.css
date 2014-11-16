@@ -1,0 +1,14 @@
+.questions ul li {
+  display: block;
+  float: left;
+  padding: 10px;
+}
+.questions ul li .active {
+  font-weight: bold;
+  color: #ff0000;
+}
+.questions ul:after {
+  display: block;
+  content: " ";
+  clear: both;
+}
