@@ -2,11 +2,22 @@ angular.module 'greenbricks-main',['ngRoute']
 
   .config ($routeProvider) ->
     $routeProvider
-      .when '/',
+      .when '/main',
         templateUrl: 'main/main.html'
         controller: 'MainCtrl'
+      .when '/',
+        templateUrl: 'main/landing.html'
+        controller: 'LandingCtrl'
+  .controller "LandingCtrl", ($scope, $location) ->
+    $scope.address = null
 
-  .controller 'MainCtrl', ($scope) ->
+
+    $scope.start = ->
+      return unless $scope.address
+
+      $location.path("/main").search(address: $scope.address)
+
+  .controller 'MainCtrl', ($scope, $routeParams) ->
     solarRates =
       house:  600
       rowHouse: 400
@@ -91,6 +102,8 @@ angular.module 'greenbricks-main',['ngRoute']
     $scope.solarSum = 0
     $scope.insulationSum = 0
     $scope.doubleWindowsSum = 0
+
+    $scope.address = $routeParams.address
 
     $scope.$watch "calcModel", (newValue, oldValue) ->
       $scope.calculateChartResults()
