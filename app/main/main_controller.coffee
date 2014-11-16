@@ -43,16 +43,6 @@ angular.module 'greenbricks-main',['ngRoute']
       value: "modern"
       label: "2000"
     ]
-    $scope.windowTypes = [
-      value: "single"
-      label: "Normal"
-    ,
-      value: "double"
-      label: "Double Frame"
-    ,
-      value: "triple"
-      label: "Triple Glass"
-    ]
 
     $scope.calcModel =
       home: "house"
@@ -62,10 +52,11 @@ angular.module 'greenbricks-main',['ngRoute']
         insulation:
           wall: true
           floor: true
-          ceiling: false
+          roof: false
         power:
           solar: true
-        windows: "single"
+        windows:
+          double: false
 
     $scope.$watch "calcModel", (newValue, oldValue) ->
       $scope.calculateChartResult()
@@ -77,21 +68,22 @@ angular.module 'greenbricks-main',['ngRoute']
       $scope.calcResultChart.series = [
         name: "Solar"
         data: [8,7,6,5,4,3,2,1].map((v) -> v - Math.random() * 2)
-        color: "#7cb5ec"
+        color: "#f39c12"
       ,
         name: "Insulation"
         data: [8,7,6,5,4,3,2,1].map((v) -> v / 1.5 - Math.random() * 2)
-        color: "#434348"
+        color: "#c0392b"
       ,
         name: "LED Lighting"
         data: [8,7,6,5,4,3,2,1].map((v) -> v / 2 - Math.random())
-        color: "#90ed7d"
+        color: "#16a085"
       ]
 
     $scope.savingsChart =
       options:
         chart:
           type: "column"
+          backgroundColor: "#eee"
         title:
           text: "Overall Savings"
         xAxis:
@@ -104,6 +96,7 @@ angular.module 'greenbricks-main',['ngRoute']
             enabled: false
             minorGridLineWidth: 0
             minorTickLength: 0
+          gridLineColor: "#CCC"
 
       size:
         height: 200
@@ -112,17 +105,18 @@ angular.module 'greenbricks-main',['ngRoute']
       series: [
         name: "Today"
         data: [40]
-        color: "#b4512e"
+        color: "#c0392b"
       ,
         name: "Future"
         data: [20]
-        color: "#77ab14"
+        color: "#16a085"
       ]
 
     $scope.calcResultChart =
       options:
         chart:
           type: "area"
+          backgroundColor: "#eee"
         title:
           text: "Environmental Analysis"
         plotOptions:
@@ -139,5 +133,6 @@ angular.module 'greenbricks-main',['ngRoute']
           title:
             text: "Savings in €"
           min: 0
+          gridLineColor: "#CCC"
 
       series: [{}, {}]

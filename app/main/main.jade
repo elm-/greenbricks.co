@@ -1,43 +1,54 @@
-| {{ calcModel }}
-.row
-  .col-xs-6
-    h3 My Home
-    .questions
-      ul
-        li(ng-repeat="v in homeTypes")
-          a(ng-click="calcModel.home = v.value", ng-class="{'active': calcModel.home == v.value}") {{ v.label }}
+.data-entry
+  h3 My Home
+  .questions
+    ul.questions-three
+      li(ng-repeat="v in homeTypes", ng-class="{'active': calcModel.home == v.value}")
+        a(ng-click="calcModel.home = v.value")
+          img.img-responsive.img-padding-bottom(ng-src="/assets/img/selection/{{ v.value }}.png")
+          span {{ v.label }}
 
-      ul
-        li(ng-repeat="v in sizeTypes")
-          a(ng-click="calcModel.size = v.value", ng-class="{'active': calcModel.size == v.value}") {{ v.label }}
+    ul.questions-four
+      li(ng-repeat="v in sizeTypes", ng-class="{'active': calcModel.size == v.value}")
+        a(ng-click="calcModel.size = v.value")
+          img.img-responsive(ng-src="/assets/img/selection/{{ v.value }}.png")
+          span {{ v.label }}
 
-      ul
-        li(ng-repeat="v in yearTypes")
-          a(ng-click="calcModel.year = v.value", ng-class="{'active': calcModel.year == v.value}") {{ v.label }}
+    ul
+      li(ng-repeat="v in yearTypes")
+        a(ng-click="calcModel.year = v.value", ng-class="{'active': calcModel.year == v.value}") {{ v.label }}
 
-      ul
-        li
-          input(type="checkbox", ng-model="calcModel.installations.power.solar")
-          | Solar
+    ul
+      li(ng-class="{'active': calcModel.installations.power.solar}")
+        a(ng-click="calcModel.installations.power.solar = ! calcModel.installations.power.solar")
+          img.img-responsive(ng-src="/assets/img/selection/solar.png")
+          span Solar
 
-      ul
-        li
-          input(type="checkbox", ng-model="calcModel.installations.insulation.wall")
-          | Wall Insulation
-        li
-          input(type="checkbox", ng-model="calcModel.installations.insulation.floor")
-          | Floor Insulation
-        li
-          input(type="checkbox", ng-model="calcModel.installations.insulation.ceiling")
-          | Ceiling Insulation
+    ul
+      li(ng-class="{'active': calcModel.installations.insulation.wall}")
+        a(ng-click="calcModel.installations.insulation.wall = ! calcModel.installations.insulation.wall")
+          img.img-responsive(ng-src="/assets/img/selection/wall.png")
+          span Wall Insulation
+      li(ng-class="{'active': calcModel.installations.insulation.floor}")
+        a(ng-click="calcModel.installations.insulation.floor = ! calcModel.installations.insulation.floor")
+          img.img-responsive(ng-src="/assets/img/selection/floor.png")
+          span Floor Insulation
+      li(ng-class="{'active': calcModel.installations.insulation.roof}")
+        a(ng-click="calcModel.installations.insulation.roof = ! calcModel.installations.insulation.roof")
+          img.img-responsive(ng-src="/assets/img/selection/roof.png")
+          span Roof Insulation
 
-      ul
-        li(ng-repeat="v in windowTypes")
-          a(ng-click="calcModel.installations.windows = v.value", ng-class="{'active': calcModel.installations.windows == v.value}") {{ v.label }}
+    ul
+      li(ng-class="{'active': calcModel.installations.windows.double}")
+        a(ng-click="calcModel.installations.windows.double = ! calcModel.installations.windows.double")
+          img.img-responsive(ng-src="/assets/img/selection/windowsDouble.png")
+          span Double Glass
+.data-result
+  highchart#savingsChart(config="savingsChart")
+  highchart#calcResultChart(config="calcResultChart")
 
-  .col-xs-6
-    h3 My Result
-    highchart#savingsChart(config="savingsChart")
-    highchart#calcResultChart(config="calcResultChart")
+  a.btn.btn-primary Buy Shit
 
-    a.btn.btn-primary Buy Shit
+nav.navbar.navbar-inverse.navbar-fixed-bottom(role="navigation")
+  .container
+    ul
+      li test
