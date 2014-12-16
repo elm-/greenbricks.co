@@ -4,13 +4,13 @@
     ul.questions-four
       li(ng-repeat="v in homeTypes", ng-class="{'active': calcModel.home == v.value}")
         a(ng-click="calcModel.home = v.value")
-          img.img-responsive.img-padding-bottom(ng-src="/assets/img/selection/{{ v.value }}.png")
+          img.img-responsive.img-padding-bottom(ng-src="assets/img/selection/{{ v.value }}.png")
           span {{ v.label }}
 
     ul.questions-four
       li(ng-repeat="v in sizeTypes", ng-class="{'active': calcModel.size == v.value}")
         a(ng-click="calcModel.size = v.value")
-          img.img-responsive(ng-src="/assets/img/selection/{{ v.value }}.png")
+          img.img-responsive(ng-src="assets/img/selection/{{ v.value }}.png")
           span {{ v.label }}
 
     ul
@@ -23,50 +23,50 @@
     ul
       li(ng-class="{'active': calcModel.installations.power.solar}")
         a(ng-click="calcModel.installations.power.solar = ! calcModel.installations.power.solar")
-          img.img-responsive(ng-src="/assets/img/selection/solar.png")
+          img.img-responsive(ng-src="assets/img/selection/solar.png")
           span Solar
       li(ng-class="{'active': calcModel.installations.insulation.wall}")
         a(ng-click="calcModel.installations.insulation.wall = ! calcModel.installations.insulation.wall")
-          img.img-responsive(ng-src="/assets/img/selection/wall.png")
+          img.img-responsive(ng-src="assets/img/selection/wall.png")
           span Wall Insulation
       li(ng-class="{'active': calcModel.installations.insulation.floor}")
         a(ng-click="calcModel.installations.insulation.floor = ! calcModel.installations.insulation.floor")
-          img.img-responsive(ng-src="/assets/img/selection/floor.png")
+          img.img-responsive(ng-src="assets/img/selection/floor.png")
           span Floor Insulation
       li(ng-class="{'active': calcModel.installations.insulation.roof}")
         a(ng-click="calcModel.installations.insulation.roof = ! calcModel.installations.insulation.roof")
-          img.img-responsive(ng-src="/assets/img/selection/roof.png")
+          img.img-responsive(ng-src="assets/img/selection/roof.png")
           span Roof Insulation
       li(ng-class="{'active': calcModel.installations.windows.double}")
         a(ng-click="calcModel.installations.windows.double = ! calcModel.installations.windows.double")
-          img.img-responsive(ng-src="/assets/img/selection/windowsDouble.png")
+          img.img-responsive(ng-src="assets/img/selection/windowsDouble.png")
           span Double Glass
 .data-result
 
   .total-savings
     .left
-      img(src="/assets/img/cost.png")
+      img(src="assets/img/cost.png")
     .right
       .value {{ totalSumFormatted() }}k €
       .title Total Savings
 
   .co2-savings
     .left
-      img(src="/assets/img/co2.png")
+      img(src="assets/img/co2.png")
     .right
       .value {{ totalCo2SumFormatted() / 25 }}k
       .title CO2 kg / year
 
   .total-savings
     .left
-      img(src="/assets/img/cost.png")
+      img(src="assets/img/cost.png")
     .right
       .value {{ totalSumFormatted() / 25}}k €
       .title Yearly Savings
 
   .co2-savings
     .left
-      img(src="/assets/img/comfort.png")
+      img(src="assets/img/comfort.png")
     .right
       .value Invaluable
       .title Increased Comfort
